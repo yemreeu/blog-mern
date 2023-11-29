@@ -1,27 +1,38 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 
-const Post = () => {
+
+const Post = ({ _id,content, cover, summary, title, createdAt, author }) => {
+  const inputDate = new Date(createdAt);
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZoneName: "short",
+  };
+  const outputDateString = inputDate.toLocaleString("en-US", options);
   return (
     <div className="post">
       <div className="image">
-        <img src="\public\main.png"></img>
+        <Link to={`/post/${_id}`}>
+          {" "}
+          <img src={"http://localhost:4000/" + cover} alt=""></img>
+        </Link>
       </div>
       <div className="texts">
-        <h2>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-          temporibus eum nostrum incidunt quas totam alias iusto officiis iste
-          expedita!
-        </h2>
+        <Link to={`/post/${_id}`}>
+          <h2>{title}</h2>
+        </Link>
+
         <p className="info">
-          <a className="author">Yunus Emre Uyanık</a>
-          <time>20/11/2023 14:57</time>
+          <a className="author">{author.username}</a>
+          <time>{outputDateString}</time>
         </p>
-        <p className="summary">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Necessitatibus quis blanditiis ad qui a, earum nesciunt rerum deleniti
-          facere ea.
-        </p>
+        <p className="summary">{summary}</p>
       </div>
     </div>
   );
