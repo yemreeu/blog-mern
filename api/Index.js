@@ -1,3 +1,5 @@
+const { mongoDBURL } = require("./config.js");
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -19,9 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-mongoose.connect(
-  "mongodb+srv://kenta:nmeYu0R0Mcwiubuk@cluster0.c27jmr3.mongodb.net/?retryWrites=true&w=majority"
-);
+mongoose.connect(mongoDBURL);
 
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
@@ -141,7 +141,7 @@ app.put("/post/:id", uploadMiddleware.single("file"), async (req, res) => {
         content,
         cover: newPath ? newPath : postDoc.cover,
       });
-      
+
       res.json(postDoc);
     });
   }
