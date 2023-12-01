@@ -11,7 +11,7 @@ const PostPage = () => {
   const { id } = useParams();
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:4000/post/${id}`)
+    fetch(`https://kenta-mern-api.vercel.app/post/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPostInfo(data);
