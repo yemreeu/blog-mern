@@ -56,7 +56,7 @@ const EditPost = () => {
     if (files?.[0]) {
       data.set("file", files?.[0]);
     }
-    const response = await fetch("http://localhost:4000/post/" + id, {
+    const response = await fetch("https://kenta-mern-api.vercel.app/post/" + id, {
       method: "PUT",
       body: data,
       credentials: "include",
