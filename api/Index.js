@@ -3,8 +3,8 @@ const { mongoDBURL } = require("./config.js");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const User = require("./models/User");
-const Post = require("./models/Post");
+const User = require("./models/User.js");
+const Post = require("./models/Post.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const app = express();
@@ -20,7 +20,6 @@ app.use(
   cors({
     credentials: true,
     origin: "https://blog-mern-client.vercel.app",
-    exposedHeaders: ["set-cookie"],
   })
 );
 app.use(express.json());
