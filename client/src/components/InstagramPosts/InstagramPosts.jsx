@@ -31,7 +31,7 @@ const InstagramPosts = () => {
     }, []);
   
     return (
-      <div className="container">
+      <div >
         <Carousel
           data={postsWithoutVideos.map((post) => ({ src: post.media_url, alt: post.caption }))}
         />

@@ -5,13 +5,32 @@ import DarkModeToggle from "./DarkModeToggle";
 import "../App.css";
 import { FaBars } from "react-icons/fa";
 import { SlClose } from "react-icons/sl";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Header = () => {
+  const { toggle, mode } = useContext(ThemeContext);
+  const [scrolling, setScrolling] = useState(false);
+
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [isResponsive, setIsResponsive] = useState(false);
   const handleToggle = () => {
     setIsResponsive(!isResponsive);
   };
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    if (scrollPosition > 0) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
+  const headerClass = `topnav ${isResponsive ? "responsive" : ""} ${
+    scrolling ? "scrolled" : ""
+  } ${mode === "light" ? "light" : "dark"}`;
+
+
   const handleCloseNavbar = () => {
     setIsResponsive(false); // Navbar'ı kapatmak için state'i false yap
   };
@@ -23,6 +42,12 @@ const Header = () => {
         setUserInfo(userInfo);
       });
     });
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+    
   }, []);
 
   const username = userInfo?.username;
@@ -36,30 +61,30 @@ const Header = () => {
   };
   return (
     <header
-      className={`topnav ${isResponsive ? "responsive" : ""}`}
+    className={headerClass}
       id="myTopnav"
     >
       <div className="leftInfo">
-        <DarkModeToggle />
-        <Link to="/home" className="logo active" onClick={handleCloseNavbar}>
+      {!isResponsive && <DarkModeToggle />}
+        <Link to="/" className="logo active" onClick={handleCloseNavbar}>
           Kenta
         </Link>
       </div>
 
       <nav>
-        <Link to="/#" className="a_items" onClick={handleCloseNavbar}>
+        <Link to="/portfolio" className="a_items" onClick={handleCloseNavbar}>
           Çalışmalar
         </Link>
-        <Link to="/#" className="a_items" onClick={handleCloseNavbar}>
+        <Link to="/blog" className="a_items" onClick={handleCloseNavbar}>
           Blog
         </Link>
-        <Link to="/#" className="a_items" onClick={handleCloseNavbar}>
+        <Link to="/ask" className="a_items" onClick={handleCloseNavbar}>
           Plancılara Sor
         </Link>
-        <Link to="/#" className="a_items" onClick={handleCloseNavbar}>
+        <Link to="/contact" className="a_items" onClick={handleCloseNavbar}>
           İletişim
         </Link>
-        <Link to="/#" className="a_items" onClick={handleCloseNavbar}>
+        <Link to="/about" className="a_items" onClick={handleCloseNavbar}>
           Hakkımızda
         </Link>
 

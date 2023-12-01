@@ -48,8 +48,8 @@ img {
 }
 
 main {
-  padding: 10px;
   max-width: 1280px;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
@@ -57,8 +57,19 @@ header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
-  align-items: center;
+  align-items: center; 
+  height: 20px;
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 200ms ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  padding: 40px;
 }
+
+
 
 header a {
   text-decoration: none;
@@ -102,15 +113,10 @@ div.post div.texts h2 {
 
 div.post p.info {
   margin: 6px 0;
-  color: #929292;
   font-size: 0.8rem;
   font-weight: bold;
   display: flex;
   gap: 10px;
-}
-
-div.post p.info a.author {
-  color: #333;
 }
 
 div.post p.summary {
@@ -214,28 +220,35 @@ a svg {
 }
 
 .topnav {
-  width: 100%;
-
-  padding: 0px;
   z-index: 1000;
 }
 
 .topnav a {
   float: left;
   display: block;
-  /* color: red; */
   text-align: center;
   padding: 12px;
   text-decoration: none;
   font-size: 17px;
+  transition: font-size 0.3s ease;
+}
+
+.topnav a:hover {
+  font-size: 18px;
 }
 
 .topnav .icon {
   display: none;
 }
 
+@media screen and (max-width: 768px) {
+  .homePage-container {
+    flex-direction: column-reverse;
+  }
+}
+
 @media screen and (max-width: 1024px) {
-  .topnav a  {
+  .topnav a {
     display: none;
   }
 
@@ -244,7 +257,7 @@ a svg {
     display: block;
   }
 
-  .topnav.responsive {
+  .topnav.responsive{
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -275,6 +288,8 @@ a svg {
     color: #bbb;
   }
 
+  
+
   .topnav.responsive a {
     float: none;
     display: block;
@@ -288,12 +303,25 @@ a svg {
     margin-top: 20px;
   }
 
-  .toggle-container{
+  /* .toggle-container {
     display: none;
+  } */
+   
+  .homePage-container {
+    
+    margin-top: 0px !important;
   }
+  /* .toggle-container {
+    
+
+    position: absolute;
+    left: 80px;
+    top: 40px;
+    font-size: x-large;
+  } */
 }
 
-.leftInfo{
+.leftInfo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -303,16 +331,12 @@ a svg {
 /* Home.css */
 .homePage-container {
   width: 100%;
-  max-width: 1536px; /* Adjust the value as needed */
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
 }
 
 .homePage-image {
@@ -333,47 +357,61 @@ a svg {
 }
 
 .homePage-text-container h1 {
-  color: #000;
-  font-size: 2.25rem;
+  
   font-weight: bold;
+  font-size: 48px;
+  background: linear-gradient(to bottom, #194c33, #bbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .homePage-text-container span {
-  color: #000;
   font-size: 1.25rem;
   font-weight: 500;
+  line-height: 35px;
 }
 
 .homePage-button-container {
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
 }
 
 .homePage-button {
-  width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   transition-property: all;
   transition-duration: 200ms;
   border-width: 2px;
   border-radius: 0.75rem;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .homePage-primary {
   border-color: #0070f3; /* Replace with your desired brand color */
-  background-color: #0070f3; /* Replace with your desired brand color */
+  background-color: #53c28b;
   color: #fff;
+
+}
+.homePage-primary:hover {
+  background-color: #409c6d; /* Replace with your desired brand color */
 }
 
 .homePage-secondary {
-  border-color: #0070f3; /* Replace with your desired brand color */
-  background-color: #fff;
-  color: #0070f3; /* Replace with your desired brand color */
+  background-color: #53c28b;
+  color: #fff;
 }
 
 .homePage-secondary:hover {
-  color: #fff;
-  background-color: #0070f3; /* Replace with your desired brand color */
-  border-color: #0070f3; /* Replace with your desired brand color */
+  background-color: #409c6d; /* Replace with your desired brand color */
+}
+
+.layout-content {
+  margin-top: 100px;
+  padding: 2rem;
+
 }

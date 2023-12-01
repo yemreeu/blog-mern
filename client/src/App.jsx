@@ -10,6 +10,12 @@ import CreatePost from "./pages/CreatePost";
 import PostPage from "./pages/PostPage";
 import EditPost from "./pages/EditPost";
 import HomePage from "./pages/HomePage";
+import ContactPage from "./pages/ContactPage/ContactPage";
+import AboutPage from "./pages/AboutPage/AboutPage";
+import AskUsPage from "./pages/AskUsPage/AskUsPage";
+import PorfolioPage from "./pages/PorfolioPage/PorfolioPage";
+
+
 
 function App() {
   return (
@@ -17,10 +23,14 @@ function App() {
       <UserContextProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<IndexPage />} />
+            <Route index element={<HomePage />} />
+            <Route path="/blog" element={<IndexPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/home" element={<HomePage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/ask" element={<AskUsPage />} />
+            <Route path="/portfolio" element={<PorfolioPage />} />
             <Route path="/create" element={<CreatePost />} />
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/edit/:id" element={<EditPost />} />

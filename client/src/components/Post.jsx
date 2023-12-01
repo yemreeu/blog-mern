@@ -29,7 +29,7 @@ const Post = ({ _id,content, cover, summary, title, createdAt, author }) => {
         </Link>
 
         <p className="info">
-          <a className="author">{author.username}</a>
+          <a className="author">Yazar: {author.username}</a>
           <time>{outputDateString}</time>
         </p>
         <p className="summary">{summary}</p>

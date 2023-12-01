@@ -10,6 +10,8 @@ const IndexPage = () => {
   }, []);
   return (
     <div>
+      <h1>Bloglar</h1>
+      <br />
       {posts.length > 0 && posts.map((post,index) => (
         <Post key={index} {...post}/>
       ))}
