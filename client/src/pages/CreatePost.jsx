@@ -42,7 +42,7 @@ const CreatePost = () => {
 
     e.preventDefault();
     console.log(files);
-    const response  = await fetch("http://localhost:4000/post", {
+    const response  = await fetch("https://kenta-mern-api.vercel.app/post", {
       method: "POST",
       body: data,
       credentials: 'include',
